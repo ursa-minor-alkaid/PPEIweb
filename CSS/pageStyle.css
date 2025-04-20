@@ -1,0 +1,113 @@
+.title-overlay {
+    position: absolute; /* 绝对定位 */
+    bottom: 10px; /* 距离底部20px */
+    margin-left: 65px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 140px;
+    color: #333;
+    -webkit-text-stroke: 2px hsla(273, 45%, 80%, 0.861);
+    text-stroke: 2px hsla(273, 45%, 80%, 0.861);
+    text-shadow: 0 0 10px hsla(273, 58%, 86%, 0.683);
+    z-index: 1; /* 确保文字在图片上方 */
+}
+
+.title1 {
+    margin-left: 55px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 65px;
+    color: #333;
+    text-shadow: 5px 5px 5px hsla(273, 58%, 86%, 0.683);
+}
+
+.title1-hr {
+    border: 1.5px solid #ccc;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    margin-left: 0px;
+    margin-right: 55px;
+}
+
+.title1-hr-home {
+    border: 1.5px solid #ccc;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    margin-left: 55px;
+    margin-right: 55px;
+}
+
+.title2 {
+    margin-left: 55px;
+    margin-bottom: 5px;
+    color: #333;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 40px;
+}
+
+.paragraph-type1 {
+    font-size: 1.25rem;
+    line-height: 1.85;
+    font-weight: 400;
+    color: #333;
+    margin-bottom: 1rem;
+    text-align: justify;
+    font-family: 'Times New Roman', Times, serif;
+    margin-left: 55px;
+    margin-right: 55px;    
+}
+
+.video-container {
+    margin-top: 20px; /* 在视频和文字之间添加间距 */
+    max-width: 800px; /* 限制视频的最大宽度 */
+    margin-left: auto;
+    margin-right: auto; /* 让视频居中显示 */
+}
+
+.we-win {
+    width: 100px;
+    position: fixed;
+    right: 30px;
+    top: 300px;
+}
+
+.content-container {
+    background-color: rgba(255, 255, 255, 0.715); /* 白色背景 */
+    border-radius: 15px; /* 圆角 */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* 阴影效果 */
+    padding-bottom: 20px; /* 内边距 */
+    margin: 20px auto 80px; /* 外边距，居中显示 */
+    max-width: 1300px; /* 最大宽度 */
+    position: relative; /* 相对定位 */
+    z-index: 0; /* 确保在背景上层 */
+}
+
+.interview-content {
+    display: grid;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.pdf-iframe {
+    border: 2px solid #ccc; /* 添加边框 */
+    border-radius: 5px; /* 添加圆角 */
+    margin-top: 25px;
+    width: 1000px;
+}
+
+.Photo-cover {
+    width: 100%; /* 图片宽度与容器一致 */
+    height: auto; /* 保持图片的宽高比 */
+    display: block; /* 确保图片是块级元素 */
+    margin: 0; /* 移除外边距 */
+    padding: 0; /* 移除内边距 */
+    border-radius: 15px 15px 0 0; /* 上边角圆角，下边角直角 */
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 70%, rgba(0, 0, 0, 0) 100%); /* 下边缘虚化 */
+}
+
+.photo-container {
+    position: relative; /* 设置为相对定位容器 */
+}
+
+
+

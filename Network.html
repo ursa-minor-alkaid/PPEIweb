@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network</title>
+    <link rel="stylesheet" href="./CSS/navStyle.css">
+    <link rel="stylesheet" href="./CSS/pageStyle.css">
+    <link rel="stylesheet" href="./CSS/footerStyle.css">
+    <link rel="stylesheet" href="./CSS/backgroundGradient.css">
+    <link rel="stylesheet" href="./CSS/relationship.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="nav-menu">
+            <li class="nav-logo">
+                <img src="../Assets/content/PPEI-logo.png" alt="Logo" class="PPEI-logo">
+            </li>
+            <li class="nav-item">
+                <a href="./index.html" class="nav-link">Home Page</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">Project</a>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-item"><a href="./SpeedMeeting.html">Speed Meeting</a></li>
+                    <li class="dropdown-item"><a href="./Interview.html">Interview</a></li>
+                    <li class="dropdown-item"><a href="./Network.html">Network</a></li>
+                    <li class="dropdown-item"><a href="./TransversalSkills-Self-criticism.html">Transversal Skills & Self-criticism</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">Team</a>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-item"><a href="./TeamMembers.html">Team Members</a></li>
+                    <li class="dropdown-item"><a href="./JobsOfInterests.html">Jobs of Interests</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="./About.html" class="nav-link">About</a>
+            </li>
+        </ul>
+    </nav>
+    
+    <div class="content-container">
+        <div class="photo-container">
+            <img src="../Assets/photos/Network-Cover.png" alt="Network Photo Cover" class="Photo-cover">
+            <h1 class="title-overlay">Network</h1>
+        </div>
+
+        <div class="content">
+            <h2 class="title1">Interactome</h2>
+            <hr class="title1-hr-home">
+            <p class="paragraph-type1">
+                Our team has successfully connected with professionals from leading companies and research institutions, engaging in insightful discussions about career development and cutting-edge topics in the field of biology. This invaluable exchange allowed us to broaden our horizons and create the professional network you see before you. We hope this platform will facilitate knowledge-sharing and collaboration with like-minded individuals as we explore the vast possibilities within the field of biology.
+            </p>
+        </div>
+
+        <!-- 此处开始关系网 -->
+        <div class="network-container">
+            <div id="network-graph"></div>
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                // 数据集
+                const data = {
+                    nodes: [
+                        { id: 1, name: "PPEI-TeamD", gender: "Female & Male", company: "HUST", position: "Student", field: "Biology", phone: "", major: "Biology", relationship: "", importance: 5 },
+                        { id: 2, name: "Bing SUN", gender: "Male", company: "Ruifudi Biomedical (Shanghai) Co., Ltd.", position: "Technica Manager", field: "biotechnology", phone: "13476850392", major: "Biology", relationship: "SchoolFellow", importance: 4 },
+                        { id: 3, name: "Hongkang LIU", gender: "Male", company: "State Investment Corporation Venture", position: "Investment Manager", field: "Investment", phone: "13476850392", major: "Biology", relationship: "Colleague", importance: 3 },
+                        { id: 4, name: "Yongjian HU", gender: "Male", company: "HitGen", position: "Manager", field: "biotechnology", phone: "17718424738", major: "Biology", relationship: "Colleague", importance: 3 },
+                        { id: 5, name: "Xiu FENG", gender: "Male", company: "Institute of Hydrobiology, Chinese Academy of Sciences", position: "Researcher", field: "aquatic genetics", phone: "18086102905", major: "Environment", relationship: "Researchers", importance: 4 },
+                        { id: 6, name: "Hongyi AO", gender: "Male", company: "Institute of Hydrobiology, Chinese Academy of Sciences", position: "Researcher", field: "aquatic genetics", phone: "18472264507", major: "Environment", relationship: "Colleague", importance: 3 },
+                        { id: 7, name: "Huan ZHU", gender: "Male", company: "Institute of Hydrobiology, Chinese Academy of Sciences", position: "Associate Research", field: "aquatic genetics", phone: "86-27-68780726", major: "Computer", relationship: "Colleague", importance: 3 },
+                        { id: 8, name: "Liang SHEN", gender: "Male", company: "Institute of Hydrobiology, Chinese Academy of Sciences", position: "Associate Professor", field: "aquatic genetics", phone: "0553-3869297", major: "Biology", relationship: "Colleague", importance: 3 },
+                        { id: 9, name: "Liping HUANG", gender: "Female", company: "Quantum Precision (Wuhan) Life Science Technology Co., Ltd.", position: "Manager", field: "biological monitoring", phone: "17302861363", major: "Biology", relationship: "HR", importance: 3 },
+                        { id: 10, name: "Pei HUANG", gender: "Female", company: "Quantum Precision (Wuhan) Life Science Technology Co., Ltd.", position: "HR", field: "biological monitoring", phone: "15623184015", major: "Biology", relationship: "Manager", importance: 2 },
+                        { id: 11, name: "Draymond GUO", gender: "Male", company: "M-CAPITAL", position: "VP", field: "biological monitoring", phone: "13277041916", major: "Biology", relationship: "Colleague", importance: 2 },
+                        { id: 12, name: "Wenwen ZHOU", gender: "Female", company: "M-CAPITAL", position: "employee", field: "biological monitoring", phone: "18472254589", major: "Biology", relationship: "Teacher", importance: 3 }
+                    ],
+                    links: [
+                        { source: 1, target: 2, label: "SchoolFellow" },
+                        { source: 2, target: 3, label: "Colleague" },
+                        { source: 2, target: 4, label: "Colleague" },
+                        { source: 1, target: 5, label: "Researchers" },
+                        { source: 5, target: 6, label: "Colleague" },
+                        { source: 5, target: 7, label: "Colleague" },
+                        { source: 5, target: 8, label: "Colleague" },
+                        { source: 1, target: 9, label: "HR" },
+                        { source: 9, target: 10, label: "Manager" },
+                        { source: 12, target: 11, label: "Colleague" },
+                        { source: 1, target: 12, label: "Teacher" }
+                    ]
+                };
+    
+                // 创建网络图
+                createNetworkGraph(data);
+            });
+    
+            function createNetworkGraph(data) {
+                const container = document.getElementById('network-graph');
+                const width = container.clientWidth;
+                const height = container.clientHeight;
+    
+    
+                // 创建SVG
+                const svg = d3.select("#network-graph")
+                    .append("svg")
+                    .attr("width", width)
+                    .attr("height", height);
+    
+                // 创建力导向图布局
+                const simulation = d3.forceSimulation(data.nodes)
+                    .force("link", d3.forceLink(data.links)
+                        .id(d => d.id)
+                        .distance(250)  // 增加连线距离
+                    )
+                    .force("charge", d3.forceManyBody().strength(-1500)) // 增强排斥力
+                    .force("collide", d3.forceCollide().radius(d => calculateNodeSize(d) * 1.5)) // 碰撞半径增加50%
+                    .force("center", d3.forceCenter(width / 2, height / 2))
+                    .force("x", d3.forceX(width / 4).strength(0.08)) // 新增水平居中力
+                    .force("y", d3.forceY(height / 2).strength(0.1));
+    
+                // 创建连线
+                const link = svg.append("g")
+                    .selectAll("line")
+                    .data(data.links)
+                    .join("line")
+                    .attr("class", "link")
+                    .attr("stroke-width", 1.5);
+    
+                // 创建关系标签
+                const linkLabel = svg.append("g")
+                    .selectAll("text")
+                    .data(data.links)
+                    .join("text")
+                    .attr("class", "link-label")
+                    .attr("text-anchor", "middle")
+                    .attr("font-size", "15px")
+                    .text(d => d.label);
+    
+                // 创建节点
+                const node = svg.append("g")
+                    .selectAll("circle")
+                    .data(data.nodes)
+                    .join("circle")
+                    .attr("class", "node")
+                    .attr("r", d => calculateNodeSize(d))
+                    .attr("fill", d => {
+                        const colors = ['hsla(273, 45%, 80%, 0.861)', 'hsla(273, 27%, 61%, 0.76)', 'hsla(273, 45%, 80%, 0.861)', 'hsla(273, 27%, 61%, 0.76)', 'hsla(273, 45%, 80%, 0.861)', 'hsla(273, 27%, 61%, 0.76)'];
+                        return colors[d.id % colors.length];
+                    })
+                    .attr("stroke", "#ffffff")
+                    .attr("stroke-width", 2)
+                    .on("click", function (event, d) {
+                        event.stopPropagation(); // 防止事件冒泡
+                        showNodeInfo(d);
+                    });
+    
+                // 添加节点标签
+                const nodeLabel = svg.append("g")
+                    .selectAll("text")
+                    .data(data.nodes)
+                    .join("text")
+                    .attr("class", "node-label")
+                    .attr("text-anchor", "middle")
+                    .attr("dominant-baseline", "middle") // 新增：垂直居中
+                    .attr("font-size", d => calculateLabelSize(d))
+                    .attr("dy", "0")
+                    .attr("font-family", "Times New Roman")
+                    .text(d => {
+                        const maxLength = calculateNodeSize(d) / 3; // 动态计算最大字符数
+                        return smartTextWrap(d.name, maxLength);
+                    });
+                // 更新布局
+                simulation.on("tick", () => {
+                    // 更新连线
+                    link
+                        .attr("x1", d => d.source.x)
+                        .attr("y1", d => d.source.y)
+                        .attr("x2", d => d.target.x)
+                        .attr("y2", d => d.target.y);
+    
+                    // 更新关系标签位置
+                    linkLabel
+                        .attr("x", d => (d.source.x + d.target.x) / 2)
+                        .attr("y", d => (d.source.y + d.target.y) / 2);
+    
+                    // 更新节点位置
+                    node
+                        .attr("cx", d => d.x)
+                        .attr("cy", d => d.y);
+    
+                    // 更新节点标签位置
+                    nodeLabel
+                        .attr("x", d => d.x)
+                        .attr("y", d => d.y);
+                });
+    
+                // 确保中心节点（PPEI-TeamD）始终在中心
+                simulation.nodes().forEach(node => {
+                    if (node.id === 1) {
+                        node.fx = width / 2;
+                        node.fy = height / 2;
+                    }
+    
+                    if (node.id === 10) {
+                        node.fx = width * 0.3;
+                        node.fy = height * 0.3;
+                    }
+                });
+    
+                simulation.nodes().forEach(node => {
+                    if (node.id === 1) {  // 中心节点
+                        node.fx = width / 2;
+                        node.fy = height / 2;
+                    }
+                    if (node.id === 10) {  // Pei HUANG
+                        node.fx = width * 0.3;
+                        node.fy = height * 0.3;
+                    }
+                    // 移除对ID9的固定设置
+                });
+            };
+            function smartTextWrap(text, maxLength) {
+                const parts = text.split(' ');
+                if (text.length <= maxLength) return text;
+                if (parts.length > 1) return parts[0] + '\n' + parts.slice(1).join(' ');
+                return text.slice(0, maxLength - 3) + '...';
+            }
+            function enforceBoundaries() {
+                const padding = 50; // 增加边距到50px
+                data.nodes.forEach(node => {
+                    if (node.id !== 1 && node.id !== 10) {
+                        node.x = Math.max(padding, Math.min(width - padding, node.x));
+                        node.y = Math.max(padding, Math.min(height - padding, node.y));
+                    }
+                });
+            }
+            function calculateNodeSize(node) {
+                // PPEI小组最大
+                if (node.id === 1) {
+                    return 55;
+                }
+                // 直接相连的次之
+                if (node.importance === 4) {
+                    return 35;
+                }
+                // 间接相连的更小
+                if (node.importance === 3) {
+                    return 25;
+                }
+                // 其他节点最小
+                return 20;
+            }
+    
+            function showNodeInfo(node) {
+                // 如果信息面板已存在，先移除
+                const existingPanel = document.getElementById('info-panel');
+                if (existingPanel) existingPanel.remove();
+    
+                // 创建信息面板
+                const infoPanel = document.createElement('div');
+                infoPanel.id = 'info-panel';
+                infoPanel.style.display = 'block';
+                infoPanel.innerHTML = `
+                    <div class="info-header">
+                        <h2 id="info-name">${node.name}</h2>
+                        <span id="close-btn">&times;</span>
+                    </div>
+                    <div id="info-content">
+                        <div class="info-item"><span class="info-label">Gender:</span> ${node.gender || 'NONE'}</div>
+                        <div class="info-item"><span class="info-label">Company:</span> ${node.company || 'NONE'}</div>
+                        <div class="info-item"><span class="info-label">Position:</span> ${node.position || 'NONE'}</div>
+                        <div class="info-item"><span class="info-label">Field:</span> ${node.field || 'NONE'}</div>
+                        <div class="info-item"><span class="info-label">Phone:</span> ${node.phone || 'NONE'}</div>
+                        <div class="info-item"><span class="info-label">Major:</span> ${node.major || 'NONE'}</div>
+                        <div class="info-item"><span class="info-label">Relationship:</span> ${node.relationship || 'NONE'}</div>
+                    </div>
+                `;
+                document.body.appendChild(infoPanel);
+    
+                const style = document.createElement('style');
+                style.textContent = `
+                    .info-label { color: #333; } /* 修改标签颜色 */
+                    #close-btn { color: hsla(273, 25%, 50%, 0.861); } /* 修改关闭按钮颜色 */
+                    #info-content { color: #555; } /* 修改内容文字颜色 */
+                    #info-name { font-size: 20px; } /* 修改标题字号 */
+                `;
+                infoPanel.appendChild(style);
+    
+                // 添加关闭按钮事件
+                document.getElementById('close-btn').addEventListener('click', function () {
+                    document.getElementById('info-panel').remove();
+                });
+            }
+    
+            function calculateLabelSize(node) {
+                const baseSize = calculateNodeSize(node);
+                // 新比例公式：基础尺寸*0.5 且不小于8px
+                return Math.max(8, Math.min(14, baseSize * 0.85)) + "px";
+            }
+            function enforceBoundaries() {
+                data.nodes.forEach(node => {
+                    if (node.id !== 1 && node.id !== 10) { // 排除固定节点
+                        node.x = Math.max(30, Math.min(width - 30, node.x));
+                        node.y = Math.max(30, Math.min(height - 30, node.y));
+                    }
+                });
+            }
+        </script>
+
+        <div class="content">
+            <h2 class="title1">Professional Data Base</h2>
+            <hr class="title1-hr-home">
+
+            <div class="interview-content">
+                <iframe src="../Assets/files/Alternative.pdf" width="100%" height="600px" class="pdf-iframe"></iframe>
+            </div>
+
+            <!-- 发布后替换的内容 -->
+            <!-- <div class="interview-content">
+                <iframe src="../Assets/files/Alternative.pdf" width="100%" height="600px" class="pdf-iframe"></iframe>
+            </div> -->
+        </div>
+
+    </div>
+
+    <div class="back-to-top" id="backToTop">↑</div>
+    <script src="backToTop.js"></script>
+
+    <footer class="footer">
+        <div class="logo-container">
+            <img src="../Assets/content/Evry-white.png" alt="Evry Logo" class="evry-logo">
+            <img src="../Assets/content/HUST-white.png" alt="HUST Logo" class="hust-logo">
+        </div>
+        <div>
+            <hr class="footer-hr">
+            <p class="footer-text">© 2025 PPEI2-B3-Team_D. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

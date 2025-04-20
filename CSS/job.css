@@ -1,0 +1,155 @@
+/* 基础样式
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+} */
+
+/* 卡片布局 */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    padding: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: start;
+    margin-bottom: 20px;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transform-style: preserve-3d;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover {
+    transform: translateY(-10px) rotateX(5deg);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+.card-header {
+    border-bottom: 2px solid #eee;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+
+.card-title {
+    color: #333;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 33px;
+    margin-bottom: 0.5rem;
+}
+
+.card-subtitle {
+    color: hsla(273, 25%, 60%, 0.861);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.card-paragraph {
+    color: #000000;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 17.5px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+
+.card-content {
+    max-height: 150px;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    /* 增加过渡时间并统一缓动函数 */
+    will-change: max-height;
+    /* 优化性能 */
+}
+
+.card-content.expanded {
+    max-height: 1000px;
+}
+
+.read-more {
+    color: hsla(273, 25%, 60%, 0.861);
+    text-align: center;
+    display: block;
+    margin-top: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.read-more:hover {
+    color: hsla(273, 45%, 80%, 0.861);
+    transition: all 0.3s ease;
+    transform: scale(1.05);
+    text-shadow: 0 0 1px hsla(273, 45%, 80%, 0.861);
+}
+
+/* 标签样式 */
+.tag {
+    display: inline-block;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background: hsla(273, 25%, 60%, 0.861);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin: 0.45rem 0.3rem;
+}
+
+.tag:hover {
+    background-color: hsla(273, 45%, 80%, 0.861);  /* 深蓝色 */
+    transform: scale(1.05);
+    box-shadow: 0 0 10px hsla(273, 45%, 80%, 0.861);
+    transition: all 0.3s ease;
+}
+
+.description {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 17px;
+    line-height: 1.65;
+    text-align: justify;
+    margin: 10px 15px;
+}
+
+.card-content img {
+    display: block;
+    max-width: 80%;
+    max-height: 200px;
+    width: auto;
+    height: auto;
+    margin: 1rem auto;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 响应式设计 */
+@media (max-width: 1024px) {
+    .card-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .card-container {
+        grid-template-columns: 1fr;
+    }
+}

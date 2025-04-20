@@ -1,0 +1,66 @@
+.carousel-container {
+    position: relative;
+    max-width: 800px;
+    margin: 20px auto;
+    overflow: hidden;
+    border-radius: 15px;
+    border: 3px solid #ccc;
+}
+
+.carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-image {
+    width: 100%;
+    height: auto;
+    flex: 0 0 100%;
+    border-radius: 15px;
+}
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 18px;
+}
+
+.carousel-button.prev {
+    left: 10px;
+    background-color: hsla(273, 25%, 50%, 0.861);
+    width: 40px;
+}
+
+.carousel-button.next {
+    right: 10px;
+    background-color: hsla(273, 25%, 50%, 0.861);
+    width: 40px;
+}
+
+.carousel-button:hover {
+    background-color: hsla(273, 45%, 80%, 0.861);
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px hsla(273, 45%, 80%, 0.861);
+}
+
+/* 指示器样式 */
+.carousel-indicator {
+    text-align: center;
+    margin: 10px auto; /* 简化margin设置 */
+    font-size: 18px;
+    color: #ffffff;
+    background: hsla(273, 25%, 60%, 0.861);
+    padding: 5px 10px;
+    border-radius: 10px;
+    display: block; /* 改为block以占据整行 */
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    width: fit-content; /* 宽度适应内容 */
+}
+

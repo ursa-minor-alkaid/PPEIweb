@@ -1,0 +1,80 @@
+* {
+    scroll-behavior: smooth;
+}
+
+section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    padding: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    z-index: 9;
+    -webkit-mask-image: linear-gradient(to bottom, black 90%, transparent 100%); /* 渐变蒙版 */
+    mask-image: linear-gradient(to bottom, black 90%, transparent 100%); /* 渐变蒙版 */
+}
+
+section img#Evry-Background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+section img#Evry {
+    position: absolute;
+    bottom: -130px;
+    right: 0px;
+    height: 120%;
+    width: auto;
+    object-fit: cover;
+    z-index: 11;
+}
+
+section img#Siniandinggeqiu {
+    position: absolute;
+    bottom: -90px;
+    left: -275px;
+    height: 120%;
+    object-fit: cover;
+    z-index: 11;
+}
+
+#text-PPEI {
+    position: absolute;
+    color: #ffffff;
+    white-space: nowrap;
+    font-size: 135px;
+    z-index: 9;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    right: -350px;
+    margin-bottom: 100px;
+    -webkit-text-stroke: 3.5px hsla(273, 45%, 80%, 0.861);
+    text-stroke: 2px hsla(273, 45%, 80%, 0.861);
+    text-shadow: 0 0 20px hsla(273, 58%, 86%, 0.683);
+}
+
+.button {
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 90px;
+    padding: 8px 30px;
+    border-radius: 40px;
+    background: hsla(273, 25%, 50%, 0.861);
+    color: #ffffff;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.265);
+    font-size: 1.5em;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    z-index: 1000;
+    transform: translateY(100px);
+}
+
+.button:hover {
+    background-color: hsla(273, 45%, 80%, 0.861);  /* 深蓝色 */
+    box-shadow: 0 0 10px hsla(273, 45%, 80%, 0.861);
+    transition: all 0.3s ease;
+}

@@ -1,0 +1,141 @@
+.team-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto auto;
+    /* 每行2列 */
+    gap: 16vmax 8vmax;
+    /* 增大行间距 */
+    width: 100%;
+    max-width: 1100px;
+    margin-bottom: 250px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 卡片容器 */
+.card-container {
+    perspective: 1000px;
+    width: 100%;
+    height: 75vh;
+    min-height: 350px;
+    max-height: 500px;
+}
+
+/* 卡片主体 */
+.card {
+    position: relative;
+    height: 75vh;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+
+/* 悬停翻转效果 */
+.card-container:hover .card {
+    transform: rotateY(180deg);
+}
+
+/* 正反面公共样式 */
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* 正面样式 */
+.card-front {
+    background: white;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 照片区域 */
+.photo {
+    height: 60%;
+    background-size: cover;
+    background-position: center;
+    border-radius: 15px 15px 0 0;
+}
+
+/* 信息区域 */
+.info {
+    padding: 3%;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.info h1 {
+    margin: 0 0 1.2vmin 0;
+    font-size:35px;
+    color: #333;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.info p {
+    margin: 0.8vmin 0;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+    color: #666;
+}
+
+/* 背面样式 */
+.card-back {
+    transform: rotateY(180deg);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    height: 75vh;
+    /* 背面高度比正面高50% */
+    transition: height 0.6s;
+}
+
+.card-back img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* 确保图片完全适应卡片区域 */
+}
+
+/* 响应式设计 */
+@media screen and (max-width: 768px) {
+    .team-container {
+        grid-template-columns: 1fr;
+        /* 在小屏幕上变为单列 */
+        gap: 15vmax;
+        /* 增大行间距 */
+        width: 90%;
+    }
+
+    .card-container {
+        height: 70vh;
+        max-width: 400px;
+    }
+
+    .card-back {
+        height: 200%;
+        /* 在小屏幕上背面更高 */
+    }
+}
+
+@keyframes bgAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}

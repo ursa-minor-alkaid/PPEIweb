@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>导航页面</title>
+    <link rel="stylesheet" href="./CSS/navStyle.css">
+    <link rel="stylesheet" href="./CSS/pageStyle.css">
+    <link rel="stylesheet" href="./CSS/footerStyle.css">
+    <link rel="stylesheet" href="./CSS/homePage.css">
+</head>
+<body>
+    <header class="navbar-home">
+        <ul class="nav-menu">
+            <li class="nav-logo">
+                <img src="../Assets/content/PPEI-logo.png" alt="Logo" class="PPEI-logo">
+            </li>
+            <li class="nav-item">
+                <a href="./index.html" class="nav-link">Home Page</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">Project</a>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-item"><a href="./SpeedMeeting.html">Speed Meeting</a></li>
+                    <li class="dropdown-item"><a href="./Interview.html">Interview</a></li>
+                    <li class="dropdown-item"><a href="./Network.html">Network</a></li>
+                    <li class="dropdown-item"><a href="./TransversalSkills-Self-criticism.html">Transversal Skills & Self-criticism</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">Team</a>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-item"><a href="./TeamMembers.html">Team Members</a></li>
+                    <li class="dropdown-item"><a href="./JobsOfInterests.html">Jobs of Interests</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="./About.html" class="nav-link">About</a>
+            </li>
+        </ul>
+    </header>
+
+    <section class="Homepage-animation">
+        <img src="../Assets/content/Evry-HomePage.png" alt="" id="Evry">
+        <img src="../Assets/content/Evry-Background.jpg" alt="" id="Evry-Background">
+        <h2 id="text-PPEI">PPEI 2-Team D</h2>
+        <a href="#Course-Introduction" class="button" id="button">Explore</a>
+        <!-- <img src="../Assets/content/Siniandinggeqiu.png" alt="四年顶个球" id="Siniandinggeqiu"> -->
+    </section>
+    <script>
+        let Evry = document.getElementById('Evry');
+        let EvryBackground = document.getElementById('Evry-Background');
+        let textPPEI = document.getElementById('text-PPEI');
+        let button = document.getElementById('button'); 
+        let Siniandinggeqiu = document.getElementById('Siniandinggeqiu');
+        
+        window.addEventListener('scroll', function(){
+            let value = window.scrollY;
+            Evry.style.top = value * 0.8 + 'px'
+            Evry.style.right = value * (-0.4) + 'px'
+            EvryBackground.style.top = value * 0 + 'px'
+            textPPEI.style.marginRight = value * 4 + 'px'
+            textPPEI.style.marginTop = value * 0.8 + 'px'
+            button.style.marginTop = value * 1.6 + 'px'
+            // Siniandinggeqiu.style.top = value * 1.6 + 'px'
+        })
+    </script>
+
+    <div class="content">
+        <h1 class="title1" id="Course-Introduction">Course Introduction</h1>
+        <hr class="title1-hr-home">
+        <p class="paragraph-type1">
+            PPEI stands for <strong>"Personalized Study and Career Program" <em>(Le Projet Personnel d’Etudes et d’Insertion)</em></strong>, 
+            a unique educational initiative offered at <strong>Université Paris-Saclay</strong>. 
+            This program spans three years and focuses on the holistic development of students, 
+            both academically and professionally. 
+            The PPEI helps students cultivate essential skills, 
+            such as eloquence, understanding of business, and project management. 
+            It encourages a combination of technical knowledge and soft skills, 
+            offering educational innovations like online resources, 
+            inverted teaching, and project-based learning.
+        </p>
+        <p class="paragraph-type1">
+            The PPEI supports students in pursuing their individual academic and career goals, 
+            ensuring they receive a personalized education that prepares them for future professional challenges .
+
+        <h1 class="title1">Team Introduction</h1>
+        <hr class="title1-hr-home">
+        <p class="paragraph-type1">
+            We are third-year students from the Sino-French Program of Biological Sciences at HUST, 
+            a quartet of lively and interesting individuals coming together to tackle the PPEI course tasks. 
+            Throughout the course, we've delved into jobs of interest, collaboratively interviewed industry professionals, 
+            and gathered valuable insights into various fields. 
+            We look forward to equipping ourselves with this knowledge to better prepare for the career challenges that lie ahead!
+        </p>        
+
+        <h1 class="title1">Behind-the-scenes</h1>
+        <hr class="title1-hr-home">
+        <p class="paragraph-type1">We tried Apollo Go when we were going to the Biolake:</p>
+        <div class="video-container">
+            <video controls width="100%">
+                <source src="../Assets/videos/ApolloGo-seg1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+
+    <div>
+        <img src="../Assets/content/gold medal.webp" alt="We Win" class="we-win">
+    </div>
+
+    <div class="back-to-top" id="backToTop">Top</div>
+    <script src="backToTop.js"></script>
+
+    <footer class="footer">
+        <div class="logo-container">
+            <img src="../Assets/content/Evry-white.png" alt="Evry Logo" class="evry-logo">
+            <img src="../Assets/content/HUST-white.png" alt="HUST Logo" class="hust-logo">
+        </div>
+        <div>
+            <hr class="footer-hr">
+            <p class="footer-text">© 2025 PPEI2-B3-Team_D. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
