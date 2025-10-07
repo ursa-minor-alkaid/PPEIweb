@@ -9,8 +9,17 @@
     <link rel="stylesheet" href="./CSS/footerStyle.css">
     <link rel="stylesheet" href="./CSS/backgroundGradient.css">
     <link rel="stylesheet" href="./CSS/interviewCarousel.css">
+    <link rel="stylesheet" href="./CSS/loadingAnimation.css">
 </head>
 <body>
+    <!-- 加载动画 -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <div class="loading-text"></div>
+        </div>
+    </div>
+    
     <nav class="navbar">
         <ul class="nav-menu">
             <li class="nav-logo">
@@ -162,6 +171,7 @@
 
     <div class="back-to-top" id="backToTop">↑</div>
     <script src="backToTop.js"></script>
+    <script src="loadingAnimation.js"></script>
 
     <footer class="footer">
         <div class="logo-container">

@@ -8,8 +8,17 @@
     <link rel="stylesheet" href="./CSS/pageStyle.css">
     <link rel="stylesheet" href="./CSS/footerStyle.css">
     <link rel="stylesheet" href="./CSS/homePage.css">
+    <link rel="stylesheet" href="./CSS/loadingAnimation.css">
 </head>
 <body>
+    <!-- 加载动画 -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <div class="loading-text"></div>
+        </div>
+    </div>
+    
     <header class="navbar-home">
         <ul class="nav-menu">
             <li class="nav-logo">
@@ -112,6 +121,7 @@
 
     <div class="back-to-top" id="backToTop">Top</div>
     <script src="backToTop.js"></script>
+    <script src="loadingAnimation.js"></script>
 
     <footer class="footer">
         <div class="logo-container">
